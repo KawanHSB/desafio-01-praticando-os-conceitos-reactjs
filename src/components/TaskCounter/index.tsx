@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss"
 
-export function TaskList() {
+export function TaskCounter() {
 
     return (
         <div className={styles.wraper}>

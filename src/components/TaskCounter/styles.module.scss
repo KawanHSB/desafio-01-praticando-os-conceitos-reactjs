@@ -1,12 +1,12 @@
 .wraper {
     display: flex;
     justify-content: center;
-    padding-top: 4rem;
+    padding-top: 6rem;
 
     .counters {
         display: flex;
         justify-content: space-between;
-        width: 48vh;
+        width: 38vw;
 
         .tasksCounter {
             color: var(--blue);
@@ -22,6 +22,14 @@
             border-radius: 8px;
             height: 1.188;
             width: 1.563rem;
+        }
+
+        .tasks {
+            display: block;
+            padding-top: 5rem;
+            background: blue;
+            height: 30px;
+            width: 20px;
         }
     }
 }

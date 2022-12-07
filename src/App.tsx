@@ -1,6 +1,7 @@
 import { Header } from "./components/Header"
 import { Task } from "./components/Task"
-import { TaskList } from "./components/TaskList"
+import { TaskCounter } from "./components/TaskCounter"
+import { EmptyTaskList } from "./components/EmptyTaskList"
 
 
 
@@ -11,7 +12,8 @@ function App() {
     <div className="App">
       <Header/>
       <Task/>
-      <TaskList/>
+      <TaskCounter/>
+      
     </div>
   )
 }
