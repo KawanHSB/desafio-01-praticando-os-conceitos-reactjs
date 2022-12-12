@@ -16,12 +16,20 @@
             color: var(--purple);
         }
 
-        .counterNumber {
-            background: var(--gray-400);
-            color: var(--gray-200);
-            border-radius: 8px;
-            height: 1.188;
-            width: 1.563rem;
+        h3 {
+            display: flex;
+            
+            .counterNumber {
+                background: var(--gray-400);
+                color: var(--gray-200);
+                border-radius: 800px;
+                height: 1.188;
+                width: 1.563;
+                text-align: center;
+                margin-left: 1vw;
+                padding-right: 0.70vw;
+                padding-left: 0.70vw;
+            }
         }
 
         .tasks {
@@ -31,5 +39,22 @@
             height: 30px;
             width: 20px;
         }
+    }
+}
+
+@media (max-width: 860px)  {
+    .counters {
+        flex-direction: column;
+    }
+
+    .taskDoneCounter {
+        padding-top: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .tasksCounter {
+        display: flex;
+        justify-content: center;
     }
 }
