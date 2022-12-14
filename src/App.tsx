@@ -13,6 +13,7 @@ function App() {
       <Header/>
       <Task/>
       <TaskCounter/>
+      <EmptyTaskList/>
       
     </div>
   )
