@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss"
 import plus from "../../assets/Plus.svg"
 
-export function Task() {
+export function NewTask() {
 
     
     return (
