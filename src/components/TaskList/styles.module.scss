@@ -21,7 +21,6 @@
 
         .checkBox {
             appearance: none;
-
             width: 1.5rem;
             height: 1.5rem;
 
@@ -31,25 +30,20 @@
             border: 2px solid var(--blue);
             position: relative;
 
+            &:checked {
+                border: none;
+            }
+
             &:checked::before {
-                position: absolute;
-                content: "";
+                display: flex;
+                border-radius: 80px;
+                justify-content: center;
+                align-items: center;
                 width: 1.5rem;
                 height: 1.5rem;
-                border-radius: 80px;
+                content: "✔";
+                color: white;
                 background: var(--purple-dark);
-                left: 50;
-                h3 {
-                    color: blue($color: #000000);
-                }
-            }
-        }
-
-        h3 {
-            padding-left: 1rem;
-
-            &:checked {
-                color: blue;
             }
         }
 
