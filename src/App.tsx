@@ -3,18 +3,33 @@ import { NewTask } from "./components/NewTask"
 import { TaskCounter } from "./components/TaskCounter"
 import { EmptyTaskList } from "./components/EmptyTaskList"
 import { TaskList } from "./components/TaskList"
+import { useState } from "react"
 
-
+interface task {
+  taskName: string,
+  taskId: string,
+  isComplete: boolean,
+}
 
 function App() {
+  const [tasks, setTasks] = useState<task[]>([])
 
+  function handleDeleteTask(taskRecived: task) {
+    const deleteTask = tasks.filter(taskToFilter => taskRecived.taskId !== taskToFilter.taskId)
+
+    setTasks(deleteTask)
+  }
 
   return (
     <div className="App">
       <Header/>
       <NewTask/>
       <TaskCounter/>
-      <TaskList/>
+      {tasks?.length ? (
+        <TaskList />
+      ):(
+        <EmptyTaskList/>
+      ) }
     </div>
   )
 }
