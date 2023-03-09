@@ -2,6 +2,8 @@ import styles from "./styles.module.scss"
 import plus from "../../assets/Plus.svg"
 import {useState} from "react"
 
+import { task } from "../../App"
+
 export function NewTask({createNewTask}) {
 
     const [taskName, setTaskName] = useState("")

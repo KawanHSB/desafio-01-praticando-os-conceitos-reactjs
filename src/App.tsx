@@ -5,7 +5,7 @@ import { EmptyTaskList } from "./components/EmptyTaskList"
 import { TaskList } from "./components/TaskList"
 import { useState } from "react"
 
-interface task {
+export interface task {
   taskName: string,
   taskId: string,
   isComplete: boolean,
@@ -14,7 +14,7 @@ interface task {
 function App() {
   const [tasks, setTasks] = useState<task[]>([])
 
-  function createNewTask(taskName) {
+  function createNewTask(taskName: string) {
     const id = String(new Date().getTime())
 
     const newTask: task = {
@@ -36,10 +36,14 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <NewTask createNewTask={createNewTask}/>
+      <NewTask 
+        createNewTask={createNewTask}
+      />
       <TaskCounter/>
       {tasks?.length ? (
-        <TaskList/>
+        <TaskList 
+          taskListState={tasks}
+        />
       ):(
         <EmptyTaskList/>
       ) }
