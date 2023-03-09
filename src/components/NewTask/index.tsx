@@ -4,7 +4,7 @@ import {useState} from "react"
 
 import { task } from "../../App"
 
-export function NewTask({createNewTask}) {
+export function NewTask({createNewTask} ) {
 
     const [taskName, setTaskName] = useState("")
 

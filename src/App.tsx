@@ -22,11 +22,19 @@ function App() {
       taskId: id,
       isComplete: false,
     }
-
+    
     setTasks([...tasks, newTask])
-    console.log(tasks)
   }
 
+  function handleTogleCompletion(taskRecived: task) {
+    const index = tasks.indexOf(taskRecived)
+    const isCompleteTogled = 
+      tasks[index].isComplete = !(tasks[index].isComplete)
+
+    console.log(isCompleteTogled)
+    console.log(tasks)
+  }
+  
   // function handleDeleteTask(taskRecived: task) {
   //   const deleteTask = tasks.filter(taskToFilter => taskRecived.taskId !== taskToFilter.taskId)
 
@@ -39,10 +47,13 @@ function App() {
       <NewTask 
         createNewTask={createNewTask}
       />
-      <TaskCounter/>
+      <TaskCounter
+        taskCounter={tasks}
+      />
       {tasks?.length ? (
         <TaskList 
           taskListState={tasks}
+          togleCompletion={handleTogleCompletion}
         />
       ):(
         <EmptyTaskList/>
