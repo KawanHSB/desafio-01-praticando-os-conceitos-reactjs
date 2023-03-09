@@ -14,19 +14,32 @@ interface task {
 function App() {
   const [tasks, setTasks] = useState<task[]>([])
 
-  function handleDeleteTask(taskRecived: task) {
-    const deleteTask = tasks.filter(taskToFilter => taskRecived.taskId !== taskToFilter.taskId)
+  function createNewTask(taskName) {
+    const id = String(new Date().getTime())
 
-    setTasks(deleteTask)
+    const newTask: task = {
+      taskName,
+      taskId: id,
+      isComplete: false,
+    }
+
+    setTasks([...tasks, newTask])
+    console.log(tasks)
   }
+
+  // function handleDeleteTask(taskRecived: task) {
+  //   const deleteTask = tasks.filter(taskToFilter => taskRecived.taskId !== taskToFilter.taskId)
+
+  //   setTasks(deleteTask)
+  // }
 
   return (
     <div className="App">
       <Header/>
-      <NewTask/>
+      <NewTask createNewTask={createNewTask}/>
       <TaskCounter/>
       {tasks?.length ? (
-        <TaskList />
+        <TaskList/>
       ):(
         <EmptyTaskList/>
       ) }
