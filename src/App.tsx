@@ -30,14 +30,18 @@ function App() {
     }
   }
 
-  // function handleTogleCompletion(taskRecived: task) {
-  //   const index = tasks.indexOf(taskRecived)
-  //   const isCompleteTogled =
-  //     tasks[index].isComplete = !(tasks[index].isComplete)
-
-  //   console.log(isCompleteTogled)
-  //   console.log(tasks)
-  // }
+  function togleCompletion(taskRecived: task) {
+    setTasks((prevTasks) => {
+      const indexOf = prevTasks.indexOf(taskRecived)
+      if (indexOf === -1) return prevTasks
+      const newTasks = prevTasks.map((task, idx) => {
+        if (idx === indexOf) return { ...task, isComplete: !task.isComplete }
+        return task
+      })
+      console.log(newTasks)
+      return newTasks
+    })
+  }
 
   function deleteTask(taskRecived: task) {
     const taskDeleted = tasks.filter((taskToFilter) => {
@@ -53,7 +57,11 @@ function App() {
       <NewTask createNewTask={createNewTask} />
       <TaskCounter taskCounter={tasks} />
       {tasks?.length ? (
-        <TaskList taskListState={tasks} deleteTask={deleteTask} />
+        <TaskList
+          taskListState={tasks}
+          deleteTask={deleteTask}
+          togleCompletion={togleCompletion}
+        />
       ) : (
         <EmptyTaskList />
       )}

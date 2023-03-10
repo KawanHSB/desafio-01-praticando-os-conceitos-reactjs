@@ -5,12 +5,18 @@ import { task } from '../../App'
 export function TaskList({
   taskListState,
   deleteTask,
+  togleCompletion,
 }: {
   taskListState: task[]
   deleteTask: (param: task) => void
+  togleCompletion: (param: task) => void
 }) {
   function handleDeleteTask(task: task) {
     deleteTask(task)
+  }
+
+  function handleTogleCompletion(task: task) {
+    togleCompletion(task)
   }
 
   return (
@@ -19,8 +25,20 @@ export function TaskList({
         return (
           <div key={task.taskId}>
             <div className={styles.task}>
-              <input className={styles.checkBox} type="checkbox" />
-              <h3>{task.taskName}</h3>
+              <input
+                className={styles.checkBox}
+                type="checkbox"
+                onClick={() => handleTogleCompletion(task)}
+              />
+              <h3
+                // style={{
+                //   textDecoration: task.isComplete ? 'line-through' : '',
+                //   opacity: task.isComplete ? '0.7' : '',
+                // }}
+                className={task.isComplete ? styles.linethrough : ''}
+              >
+                {task.taskName}
+              </h3>
               <button onClick={() => handleDeleteTask(task)}>
                 <HiOutlineTrash className={styles.trash} />
               </button>

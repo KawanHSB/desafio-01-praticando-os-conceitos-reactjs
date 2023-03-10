@@ -2,10 +2,14 @@ import { task } from '../../App'
 import styles from './styles.module.scss'
 
 export function TaskCounter({ taskCounter }: { taskCounter: task[] }) {
-  const taskNumber = taskCounter.length
+  // const [taskCompleted, setTaskCompleted] = useState<task[]>([])
 
-  const taskCompleted = taskCounter.filter((task) => task.isComplete === true)
-  const taskCompleteD = taskCompleted.length
+  const taskCompletionFilter = taskCounter.filter((taskCompletion) => {
+    return taskCompletion.isComplete
+  })
+
+  const taskNumber = taskCounter.length
+  const taskCompletedNumber = taskCompletionFilter.length
 
   return (
     <div className={styles.wraper}>
@@ -16,10 +20,7 @@ export function TaskCounter({ taskCounter }: { taskCounter: task[] }) {
         </h3>
         <h3 className={styles.taskDoneCounter}>
           Concluidas{' '}
-          <div className={styles.counterNumber}>
-            {' '}
-            {taskCompleteD} de {taskNumber}{' '}
-          </div>
+          <div className={styles.counterNumber}> {taskCompletedNumber} </div>
         </h3>
       </div>
     </div>
