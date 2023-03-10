@@ -15,7 +15,7 @@ function App() {
   const [tasks, setTasks] = useState<task[]>([])
 
   function createNewTask(taskName: string) {
-    if (taskName != '') {
+    if (taskName !== '') {
       const id = String(new Date().getTime())
 
       const newTask: task = {
@@ -39,18 +39,24 @@ function App() {
   //   console.log(tasks)
   // }
 
-  // function handleDeleteTask(taskRecived: task) {
-  //   const deleteTask = tasks.filter(taskToFilter => taskRecived.taskId !== taskToFilter.taskId)
+  function deleteTask(taskRecived: task) {
+    const taskDeleted = tasks.filter((taskToFilter) => {
+      return taskRecived.taskId !== taskToFilter.taskId
+    })
 
-  //   setTasks(deleteTask)
-  // }
+    setTasks(taskDeleted)
+  }
 
   return (
     <div className="App">
       <Header />
       <NewTask createNewTask={createNewTask} />
       <TaskCounter taskCounter={tasks} />
-      {tasks?.length ? <TaskList taskListState={tasks} /> : <EmptyTaskList />}
+      {tasks?.length ? (
+        <TaskList taskListState={tasks} deleteTask={deleteTask} />
+      ) : (
+        <EmptyTaskList />
+      )}
     </div>
   )
 }

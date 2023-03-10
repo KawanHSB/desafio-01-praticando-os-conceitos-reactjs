@@ -2,7 +2,11 @@ import styles from './styles.module.scss'
 import plus from '../../assets/Plus.svg'
 import { useState } from 'react'
 
-export function NewTask({ createNewTask }) {
+export function NewTask({
+  createNewTask,
+}: {
+  createNewTask: (param: string) => void
+}) {
   const [taskName, setTaskName] = useState('')
 
   function handleCreateNewTask() {
